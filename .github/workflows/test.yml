@@ -1,4 +1,4 @@
-name: TeamBldr Production Build
+name: Testing
 
 on:
   push:
