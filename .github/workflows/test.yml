@@ -1,0 +1,15 @@
+name: TeamBldr Production Build
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  server_ci_pipeline:
+       
+      - name: Adding line in readme file
+        working-directory: .
+        run: |
+          sed -i 's#gg#pp#g' ./README.md
+        shell: bash
