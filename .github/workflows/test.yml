@@ -3,15 +3,16 @@ name: Testing
 on:
   push:
     branches:
-      - main
+      - testing
 
 jobs:
-  server_ci_pipeline:
-   runs-on: ubuntu-latest
+  merge-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
 
-   steps:    
-      - name: Adding line in readme file
-        working-directory: .
-        run: |
-          sed -i 's#gg#pp#g' ./README.md
-        shell: bash
+      - name: Merge staging -> uat
+        uses: devmasx/merge-branch@v1.3.1
+        with:
+          type: now
+          target_branch: main
